@@ -18,6 +18,7 @@ render() {
           <Icon type="pie-chart" />
           <span>Helloworld</span>
         </Link>
+
       </Menu.Item>
         <SubMenu
           key="sub1"
@@ -27,31 +28,43 @@ render() {
           <Menu.Item key="3"><Link to="/dashboard/monitor">监控页</Link></Menu.Item>
           <Menu.Item key="4"><Link to="/dashboard/workplace">工作台</Link></Menu.Item>
         </SubMenu>
+
         <Menu.Item key="5">
           <Link to="/cardgroup">
           <span>卡片组展开</span>
           </Link>
         </Menu.Item>
+
         <Menu.Item key="6">
           <Link to="/prolist">
           <span>高级列表</span>
           </Link>
         </Menu.Item>
+        
         <Menu.Item key="7">
           <Link to="/list/index">
           <span>自定义样式</span>
           </Link>
         </Menu.Item>
+
         <Menu.Item key="8">
           <Link to="/css-modules-with-less/index">
           <span>自定义样式less</span>
           </Link>
         </Menu.Item>
+
         <Menu.Item key="9">
           <Link to="/css-modules-with-antd/index">
           <span>自定义样式antd</span>
           </Link>
         </Menu.Item>
+
+        <Menu.Item key="10">
+          <Link to="/upload">
+          <span>下载上传</span>
+          </Link>
+        </Menu.Item>
+
       </Menu>
     </Sider>
     <Layout >
