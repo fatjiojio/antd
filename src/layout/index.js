@@ -27,6 +27,12 @@ render() {
         <Menu.Item key="3"><Link to="/dashboard/monitor">监控页</Link></Menu.Item>
         <Menu.Item key="4"><Link to="/dashboard/workplace">工作台</Link></Menu.Item>
         </SubMenu>
+        <Menu.Item key="5">
+      <Link to="/cardgroup">
+        <Icon type="pie-chart" />
+        <span>卡片组展开</span>
+      </Link>
+    </Menu.Item>
       </Menu>
     </Sider>
     <Layout >
