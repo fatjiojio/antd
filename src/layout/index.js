@@ -37,6 +37,21 @@ render() {
           <span>高级列表</span>
           </Link>
         </Menu.Item>
+        <Menu.Item key="7">
+          <Link to="/list/index">
+          <span>自定义样式</span>
+          </Link>
+        </Menu.Item>
+        <Menu.Item key="8">
+          <Link to="/css-modules-with-less/index">
+          <span>自定义样式less</span>
+          </Link>
+        </Menu.Item>
+        <Menu.Item key="9">
+          <Link to="/css-modules-with-antd/index">
+          <span>自定义样式antd</span>
+          </Link>
+        </Menu.Item>
       </Menu>
     </Sider>
     <Layout >

@@ -29,6 +29,24 @@ export default {
             path: '/Prolist',
             component: 'Prolist',
           },
+          {
+            path: '/list',
+            routes: [
+              { path: '/list/index', component: 'list/index' },
+            ]
+          },
+          {
+            path: '/css-modules-with-less',
+            routes: [
+              { path: '/css-modules-with-less/index', component: 'css-modules-with-less/index' },
+            ]
+          },
+          {
+            path: '/css-modules-with-antd',
+            routes: [
+              { path: '/css-modules-with-antd/index', component: 'css-modules-with-antd/index' },
+            ]
+          },
         ]
       }],
   }
