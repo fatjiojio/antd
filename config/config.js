@@ -25,6 +25,10 @@ export default {
             path: '/CardGroup',
             component: 'CardGroup',
           },
+          {
+            path: '/Prolist',
+            component: 'Prolist',
+          },
         ]
       }],
   }

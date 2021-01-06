@@ -1,0 +1,153 @@
+
+11.	8，127。〖解释〗见习题解答第 7 页图 2.8。
+
+12.	见习题解答第 8 页 2-15 题。
+
+13.	"127+1=-128"。
+
+〖解释〗见教材图 2-5 和习题解答习 2.1 图 2.6。试题考点 byte 整数溢出，字符串连接运算。
+
+4.	str=str.substring(1)+str.substring(0,1);
+
+5.	Pixel.class，Pixel$ColorConstant.class，Pixel$Color.class。
+
+6.	不能声明 java.lang.String 的子类，因为 java.lang.String 是最终类，不能被继承。
+
+7.	见习题解答第 27 页 4-16 题。
+
+8.	javax.swing。
+
+〖解释〗该语句输出 new javax.swing.JButton() 实例所属类的父类所在的包名。 JButton 的父类是 javax.swing.JComponent 类。
+
+9. java.awt.Container 类。	〖解释〗见习题解答第 32 页 6-12 题。
+
+10. Thread.sleep(1000)；中断InterruptedException
+
+二、 问答题（30 分=5 分×6 题）
+
+5.	① 在子类的构造方法体中，调用父类的构造方法。语法格式如下：
+
+super([参数列表])
+
+- 4 - 
+例如，Person 类的默认构造方法声明如下，执行的是 Object 类的构造方法 Object()。
+
+public Person()	//Java 提供的默认构造方法
+
+{	super();	//调用父类构造方法 Object()
+
+}
+
+② 当子类重定义了父类成员时，引用被子类隐藏/覆盖的父类成员变量方法，语法格式如下：
+
+super.成员变量	//当子类隐藏父类成员变量时，引用父类同名成员变量
+
+super.成员方法([参数列表])	//当子类覆盖父类成员方法时，调用父类同名成员方法
+
+③ 注意，静态方法中不能使用 super 引用。
+2.	见习题解答第 26 页 4-6 题。
+
+3.	见习题解答第 30 页 6-14 题。
+
+4.	见习题解答第 34 页 7-5 题。
+
+5.	因为数据字节流每次读/写的 char 字符是 Unicode 编码的，2 字节。
+
+实际应用中还有其他编码，例如 GBK 等。一个字符在不同字符集中的字符编码及长度不同。因此，Java声明字符流，字符流本质上是字节流，以字符为单位读/写字节流，各字符编码及长度由字符集确定。Java 还提供转换流，按指定字符集对字符流和字节流进行转换。
+
+14.	省略，详见教材第 9 章。
+
+三、 程序阅读、改错和填空题（20 分=5 分×4 题）
+
+【评分标准说明】注释不计分。
+
+9.	① Point 类的 x、y 声明为 private，子类 Pixel 没有访问权限，以下语句错。
+
+this(p.x, p.y, color);	//子类 Pixel 没有权限访问父类的私有成员
+
+改正方案一，Point 类声明 x、y 声明为 protected 及以上权限，执行上述语句。
+
+改正方案二，Point 类声明以下拷贝构造方法：
+
+public Point(Point p)	//拷贝构造方法
+
+{this(p.x, p.y);
+
+}
+
+子类 Pixel 的构造方法修改如下：
+
+public Pixel(Point p, Color color)
+
+{super(p); this.color = color;
+
+}
+
+② Pixel()构造方法默认调用以下方法，但 Point 类没有声明 Point()构造方法。
+
+super();
+
+改正，Point 类声明默认构造方法如下：
+
+public Point()
+
+{this(0,0);
+
+}
+
+2.	① this==obj，表示判断 this 和 obj 对象是否引用同一个实例，若是，返回 ture，否则返回 false。
+
+② obj instanceof Polygon 表示判断 obj 对象引用的实例是否属于 Polygon 类及其子类，返回值类型是
+
+boolean。
+
+③ (Polygon)obj 不会抛出强制类型转换异常。因为此时 obj 对象引用的实例属于 Polygon 类及其子类，能够再声明 poly 对象也引用 obj 对象引用的实例。
+
+④ 因为 Point 类继承其父类 Object 的 equals(obj)方法，方法体是 this==obj；
+        只判断 this 和 obj 对象是否引用同一个实例，没有判断 this 和 obj 对象分别引用实例的各成员变量是否对应相等，因此，不符合需要。
+
+⑤	Point 类覆盖 Object 类的 equals(obj)方法，实现如下：
+
+public boolean equals(Object obj)	//比较当前对象与 obj 是否相等
+
+{return this==obj || obj instanceof Point && this.x==((Point)obj).x && this.y==((Point)obj).y;
+
+}
+ 
+
+- 5 -
+ 
+//添加标签和文本行
+3.	① 错误的语句及错误说明如下：
+ 
+
+Perimeter per = new Perimeter();
+ 
+
+
+//编译错，接口不能被实例化
+
+ 
+per = new Line(p1, p2);
+
+per = new ClosedFigure(p1);
+ 
+
+//编译错，Line 类没有实现 Perimeter 接口
+
+//编译错，抽象类不能被实例化
+
+ 
+②	per.perimeter()执行的是 Triangle 类的方法，计算 per 引用三角形实例的周长，因为 per 引用的是实现
+
+Perimeter 接口的 Triangle 类的实例。
+
+4.	public void run()
+
+new DataOutputStream(this.out);
+
+dout.writeInt(i);
+
+this.out.close();
+
+catch(IOException e)
