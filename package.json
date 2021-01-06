@@ -16,6 +16,7 @@
     "umi": "^3.3.3"
   },
   "dependencies": {
+    "@ant-design/pro-card": "^1.9.6",
     "@ant-design/pro-table": "^2.21.0"
   }
 }
