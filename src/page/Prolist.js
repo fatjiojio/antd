@@ -28,7 +28,7 @@ const dataSource = [
     },
 ];
 export default () => (<ProList rowKey="id" headerTitle="基础列表" dataSource={dataSource} showActions="hover" editable={{
-    onChange: (e) => console.log(e),
+    onChange:(e) => console.log(e),
 }} metas={{
     title: {
         dataIndex: 'name',
@@ -41,14 +41,15 @@ export default () => (<ProList rowKey="id" headerTitle="基础列表" dataSource
     },
     subTitle: {
         render: () => {
-            return (<Space size={0}>
+            return (
+            <Space size={0}>
               <Tag color="blue">Ant Design</Tag>
               <Tag color="#5BD8A6">TechUI</Tag>
             </Space>);
         },
     },
     actions: {
-        render: (text, row, index, action) => [
+        render:(text, row, index, action) => [
             <a onClick={() => {
                 action.startEditable(row.id);
             }} key="link">
@@ -56,4 +57,5 @@ export default () => (<ProList rowKey="id" headerTitle="基础列表" dataSource
           </a>,
         ],
     },
-}}/>);
+}}
+/>);

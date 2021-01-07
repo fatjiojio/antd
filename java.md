@@ -26,7 +26,7 @@ public class MyString extends java.lang.String
         java.lang.string不能声明子类，因为他是最终类，最终类不能被继承
 
 7.	获得当前日期月份的语句是。
-
+		this.month=today.get (Calender.MONTH)+1
 8.	下列语句的执行结果是。
 
     System.out.println(new javax.swing.JButton().getClass().getSuperClass().getPackage().getName());
@@ -41,50 +41,55 @@ public class MyString extends java.lang.String
 1.	在什么情况下需要使用“super 引用”？举例说明。
 
 2.	举例说明 Java 声明了哪些接口，各起什么作用。
+	java声明了java.lang.Comparable可比较接口
+	java.util.Comparator约定对象比较大小的规则
+	java.awt.ActionListener等事件监听器接口，约定事件的处理方法
+	java.lang.Runnable接口约定线程执行的操作
+	java.io.FileFilte文件过滤器接口，约定文件过滤规则
 
-3.	JTextField 能够响应 java.awt.event.ActionEvent 和 javax.swing.event.CaretEvent 事件，两事件触发条
+3.	JTextField 能够响应 java.awt.event.ActionEvent 和 javax.swing.event.CaretEvent 事件，两事件触发条件有什么不同？需要同时响应两者吗？
 
-件有什么不同？需要同时响应两者吗？
+4.	什么是交互线程？什么是线程互斥与同步？说明线程互斥与同步机制怎样保证交互线程对共享变量操作的正确性，不产生与时间有关的错误。
 
-4.	什么是交互线程？什么是线程互斥与同步？说明线程互斥与同步机制怎样保证交互线程对共享变
-
-量操作的正确性，不产生与时间有关的错误。
+	共享变量的多个线程之间称为交互线程，他们执行时将因竞争共享变量的使用权而影响其他线程运行的结果，可能产生与时间有关的错误
+	交互线程之间存在竞争和协作两种关系。
+	线程互斥指，采用加锁方式使若干交互线程串行的使用同一共享资源，他是解决线程间竞争关系的手段。
+	线程同步指，两个以上线程基于某个条件来协调他们的活动。一个线程的执行依赖于另一个协作线程的信号，当一个线程没有得到来自于另一个线程的信号时则需要等待，直到信号到达才被唤醒。线程同步是解决线程间协作关系的手段。
 
 5. 已知数据字节流能够读写字符，DataInputStream 和 DataOutputStream 类分别声明以下方法：
 
 public final char readChar() throws IOException	//读取 Unicode 字符，2 字节
-
-- 1 -
- 
 public final void writeChar(int value) throws IOException	//写入 Unicode 字符，2 字节
 
 public final void writeChars(String s) throws IOException	//写入字符串
 
 那么，Java 为什么还要声明字符流？字符流与字节流是什么关系？
 
-6.	什么是 Socket，作用是什么？什么是 Socket 通信？TCP Socket 和 UDP Socket 通信各有什么特点？
-各采用什么方式传输数据？Java 是如何实现 TCP Socket 和 UDP Socket 通信的？（64 学时）
+	字符流是以字符为基本读取单位。字符流本质上是字节流，以字符方式读取字节流。能够以字节流读写字符。不能以字符流读写整数。
 
+6.	什么是 Socket，作用是什么？什么是 Socket 通信？TCP Socket 和 UDP Socket 通信各有什么特点？各采用什么方式传输数据？Java 是如何实现 TCP Socket 和 UDP Socket 通信的？（64 学时）
+	Socket是通信的基石，是支持TCP/IP通信的基本操作单元。作用是可以在不同主机之间进行通信。
+	Socket通信：在不同计算机之间进行通信。
 三、 程序阅读、改错和填空题（20 分=5 分×4 题）
 
 1.	以下声明 Point 坐标点类和 Pixel 像素类，有什么错误？为什么？如何改正？
 
-public class Point	//坐标点类	import java.awt.Color;	
-{		//像素类，继承 Point 类。像素是一个带颜色的坐标点
-private int x,y;	//点的坐标	public class Pixel extends Point	
-public Point(int x,int y)		{		
-{this.x = x;		private Color color;	//像素颜色
-this.y = y;		public Pixel(int x, int y, Color color)	
-}		{	super(x,y);	
-}			this.color = color;	
-		}		
-		public Pixel(Point p, Color color)	
-		{	this(p.x, p.y, color);	
-		}		
-		public Pixel()	
-		{	this.color = new Color(0,0,0);	
-		}		
-		}		
+public class Point	//坐标点类					import java.awt.Color;	
+{																		//像素类，继承 Point 类。像素是一个带颜色的坐标点
+private int x,y;	//点的坐标					public class Pixel extends Point	
+public Point(int x,int y)						{		
+{this.x = x;											private Color color;	//像素颜色
+this.y = y;												public Pixel(int x, int y, Color color)	
+}														{	super(x,y);	
+}															this.color = color;	
+														}		
+														public Pixel(Point p, Color color)	
+														{	this(p.x, p.y, color);	
+														}		
+														public Pixel()	
+														{	this.color = new Color(0,0,0);	
+														}		
+												}		
 
 2. 已知 Point 和 Polygon 类声明如下：
 
@@ -138,8 +143,6 @@ return false;
 
 ④ this.points[i].equals(poly.points[i])调用的是 Point 类的 equals()方法。但上述 Point 类并没
  
-
-- 2 - 
 有声明 equals()方法，为什么能够调用？此时，Point 类的 equals()方法体是怎样的？执行什么操作？是否符合 Point 类的需要？
 
 ⑤	Point 类希望 equals()方法比较 this 和 obj 对象分别引用实例的各成员变量是否对应相等。写出该方法实现。
@@ -167,11 +170,10 @@ public class Triangle extends ClosedFigure	//三角形类
 
 Point p1=new Point(100,100), p2=new Point(100,130), p3=new Point(140,130);
 
-Perimeter per = new Perimeter();
+Perimeter per = new Perimeter();//接口不能被实例化
 
-per = new Line(p1, p2);
-
-per = new ClosedFigure(p1);
+per = new Line(p1, p2);//Line 没有实现接口
+per = new ClosedFigure(p1);//抽象类不能被 实例化
 
 per = new Triangle(p1, p2, p3);
 

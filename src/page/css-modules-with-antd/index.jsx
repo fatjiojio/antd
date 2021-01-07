@@ -1,12 +1,12 @@
 import styles from './styles.less';
 import { Button } from 'antd';
 
-export default () => {
+export default ()=>{
   return (
     <div>
       <p>
         <span className={styles['override-ant-btn']}>
-          <Button>圆角样式按妞</Button>
+          <Button>圆角样式按钮</Button>
         </span>
       </p>
       <p>
